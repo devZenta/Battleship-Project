@@ -4,7 +4,7 @@ public class Player {
 
     protected String name;
     protected int i; 
-    public boolean win = false;
+    public boolean win;
 
     public Player(String name, int i, boolean win) {
         this.name = name;
