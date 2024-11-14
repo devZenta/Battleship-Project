@@ -6,23 +6,30 @@ public class Main {
     public static void main(String[] args) {
 
         try (Scanner scanner = new Scanner(System.in)) {
+
+            //création d'une partie
+            Game game = new Game();
             
             System.out.println("Enter the number of players: ");
             int numberOfPlayers = scanner.nextInt();
             
-            Game game = new Game(numberOfPlayers);
+            //Initialisation du nombre de joueurs
+            game.getNbPlayers(numberOfPlayers);
+
             System.out.println();
 
+            //Création des joueurs
             for (int i = 0; i < numberOfPlayers; i++) {
 
                 System.out.println("Enter username of player " + (i + 1) + " : ");
                 String name = scanner.next();
-                Player player = new Player(name, i, false);
+                Player player = new Player(name, i, true);
                 game.createPlayers(player);
                 System.out.println();
 
             }
 
+            //Affichage des joueurs
             game.displayPlayer();
             System.out.println();
 
@@ -39,16 +46,18 @@ public class Main {
             System.out.println("Enter the game height : ");
             int height = scanner.nextInt();
 
+            //Création du plateau de jeu
             GameBoard gameBoard = new GameBoard(width, height);
+
             System.out.println();
             System.out.println("Game Board : ");
-            gameBoard.displayBoard(width, height);
 
-            boolean tempResult = game.verifyWin();
+            //Affichage du plateau de jeu
+            gameBoard.displayBoard();
 
-            while ( tempResult == false ) {
+            //Vérification de la victoire
+            while ( game.verifyWin() == false ) {
                 game.switchPlayer(0);
-                tempResult = game.verifyWin();
             }
 
         }

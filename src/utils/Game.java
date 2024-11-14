@@ -6,12 +6,18 @@ public class Game {
     protected int nbPlayersInit;
     public Player[] tabPlayers;
 
-    public Game(int nbPlayers) {
+    public Game() {
+        //this.nbPlayers = nbPlayers;
+        //this.nbPlayersInit = 0;
+        //this.tabPlayers = new Player[nbPlayers];
+        System.out.println("Game created :");
+        System.out.println();
+    }
+
+    public void getNbPlayers(int nbPlayers) {
         this.nbPlayers = nbPlayers;
         this.nbPlayersInit = 0;
         this.tabPlayers = new Player[nbPlayers];
-        System.out.println("Game created with " + nbPlayers + " players");
-        System.out.println();
     }
 
     public int switchPlayer(int currentPlayer) {
@@ -33,19 +39,20 @@ public class Game {
     }
 
     public void createPlayers(Player a) {
-        tabPlayers[nbPlayersInit++] = a;
+        this.tabPlayers[nbPlayersInit++] = a;
     }
 
     public void displayPlayer() {
-        for (int i = 0; i < nbPlayers; i++) {
-            System.out.println("Player " + (i + 1) + " : " + tabPlayers[i].getName());
+        for (int i = 0; i < this.nbPlayers; i++) {
+            System.out.println("Player " + (i + 1) + " : " + this.tabPlayers[i].getName());
         }
     }
 
     public boolean verifyWin() {
         boolean result = false;
-        for (int i = 0; i < nbPlayers; i++) {
-            if (tabPlayers[i].getWin() == true) {
+        for (int i = 0; i < this.nbPlayers; i++) {
+            if (this.tabPlayers[i].getWin() == true) {
+                System.out.println("Player " + this.tabPlayers[i].getName() + " wins !");
                 result = true;
             }
         }
