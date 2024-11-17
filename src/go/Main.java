@@ -23,7 +23,7 @@ public class Main {
 
                 System.out.println("Enter username of player " + (i + 1) + " : ");
                 String name = scanner.next();
-                Player player = new Player(name, i, true);
+                Player player = new Player(name, i, false);
                 game.createPlayers(player);
                 System.out.println();
 
@@ -50,16 +50,15 @@ public class Main {
             GameBoard gameBoard = new GameBoard(width, height);
 
             System.out.println();
-            System.out.println("Game Board : ");
+            System.out.println("Default Game Board : ");
 
             //Affichage du plateau de jeu
-            gameBoard.displayBoard();
+            gameBoard.displayBoardDefault();
 
-            //Vérification de la victoire
-            while ( game.verifyWin() == false ) {
-                game.switchPlayer(0);
+            while ( game.verifyWin() == false) {
+                int test = scanner.nextInt();
+                game.switchPlayer();
             }
-
         }
     }
 }

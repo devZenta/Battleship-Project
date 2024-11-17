@@ -50,5 +50,4 @@ public class Boat{
     public void setDirection(int direction) {
         this.direction = direction;
     }
-
 }
